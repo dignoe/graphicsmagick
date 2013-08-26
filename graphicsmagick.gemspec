@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = GraphicsMagick::VERSION
   gem.authors       = ["Chad McGimpsey"]
   gem.email         = ["chad.mcgimpsey@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = "Light ruby wrapper for the GraphicsMagick CLI."
+  gem.summary       = "Light ruby wrapper for the GraphicsMagick CLI."
+  gem.homepage      = "https://github.com/dignoe/graphicsmagick"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }

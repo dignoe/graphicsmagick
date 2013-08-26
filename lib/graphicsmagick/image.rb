@@ -1,13 +1,11 @@
 require 'tempfile'
-# require 'graphicsmagick/mogrify'
-require 'graphicsmagick/processors/identify.rb'
+require 'graphicsmagick/utilities'
 
 module GraphicsMagick
 	class Image
 		attr_accessor :file
 
-		# include GraphicsMagick::Mogrify
-		include GraphicsMagick::Identify
+		include GraphicsMagick::Utilities
 
     # Class Methods
     class << self

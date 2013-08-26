@@ -4,6 +4,8 @@ require 'graphicsmagick/utilities'
 module GraphicsMagick
 	class Image
 		attr_accessor :file
+		attr_accessor :current_utility
+		attr_accessor :commands
 
 		include GraphicsMagick::Utilities
 
@@ -13,6 +15,9 @@ module GraphicsMagick
     end
 
     def initialize(input)
+    	commands = []
+    	current_utility = "mogrify"
+
     	if input.is_a? String
     		self.file = File.new(input)
     	elsif input.is_a?(File) || input.is_a?(Tempfile)
@@ -24,6 +29,14 @@ module GraphicsMagick
 
   	def path
   		file.path
+  	end
+
+  	def write output
+  		
+  	end
+
+  	def write!
+  		
   	end
 	end
 end

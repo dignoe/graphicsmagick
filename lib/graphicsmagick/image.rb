@@ -59,7 +59,7 @@ module GraphicsMagick
     private
 
     def add_option option_name, *args
-    	command_options << {:name => option_name, :args => args.collect { |a| Shellwords.escape(a.to_s) }.join(" ")}
+    	@command_options << {:name => option_name, :args => args.collect { |a| Shellwords.escape(a.to_s) }.join(" ")}
     	self
     end
 

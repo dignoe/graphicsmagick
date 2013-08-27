@@ -1,6 +1,6 @@
 module GraphicsMagick
 	module Utilities
-		module Identify
+		module Convert
 			def convert
 				if utility == "mogrify"
 					utility = "convert"

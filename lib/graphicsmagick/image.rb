@@ -17,11 +17,11 @@ module GraphicsMagick
     	@command_options = []
     	@utility = nil
 
-    	self.file = parse_input(input)
+    	@file = parse_input(input)
   	end
 
   	def path
-  		file.path
+  		@file.path
   	end
 
   	def write output

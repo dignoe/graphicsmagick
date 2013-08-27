@@ -1,7 +1,6 @@
 module GraphicsMagick
 	module Utilities
 		module Identify
-			attr_accessor :identity
 
 			def width
 				get_identity.strip.split('x')[0].to_i

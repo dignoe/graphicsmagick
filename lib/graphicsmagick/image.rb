@@ -2,6 +2,7 @@ require 'tempfile'
 require 'subexec'
 require 'shellwords'
 require 'graphicsmagick/utilities'
+require 'active_support/core_ext/numeric/time'
 
 module GraphicsMagick
 

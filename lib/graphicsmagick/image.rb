@@ -4,7 +4,6 @@ require 'graphicsmagick/utilities'
 module GraphicsMagick
 	class Image
 		attr_accessor :file
-		attr_accessor :current_utility
 		attr_accessor :commands
 
 		include GraphicsMagick::Utilities

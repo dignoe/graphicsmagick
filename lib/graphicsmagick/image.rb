@@ -80,7 +80,7 @@ module GraphicsMagick
   	protected
 
   	def method_missing(method, *args, &block)
-      add_option("-#{method.to_s}", *args)
+      add_option("-#{method.gsub(/_/,'-').to_s}", *args)
     end
 
     private

@@ -29,7 +29,7 @@ module GraphicsMagick
 
   		if @utility.nil?
   			@utility = "mogrify"
-  			FileUtils.copy_file(path, output_path)
+  			FileUtils.copy_file(self.path, output_path)
   		end
   		command = self.send(:"build_#{@utility}_command", output_path)
 
@@ -44,7 +44,7 @@ module GraphicsMagick
   			raise NoMethodError, "You must use Image#write(output) with the #{utility} command"
   		end
 
-  		command = self.send(:"build_#{@utility}_command", path)
+  		command = self.send(:"build_#{@utility}_command", self.path)
 
   		run(command)
   		self

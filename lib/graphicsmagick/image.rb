@@ -89,6 +89,7 @@ module GraphicsMagick
     	option_args = args.collect { |a| Shellwords.escape(a.to_s) }
     	option_args = nil if option_args.is_a?(Array) && option_args.empty?
     	command_options << {option_name => option_args}
+    	self
     end
 
     def run command

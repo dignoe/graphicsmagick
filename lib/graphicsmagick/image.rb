@@ -15,8 +15,8 @@ module GraphicsMagick
 		include GraphicsMagick::Utilities
 
     def initialize(input)
-    	command_options = []
-    	utility = "mogrify"
+    	self.command_options = []
+    	self.utility = "mogrify"
 
     	if input.is_a? String
     		self.file = File.new(input)

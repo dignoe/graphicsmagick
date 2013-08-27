@@ -13,7 +13,11 @@ module GraphicsMagick
 		private
 
 		def options_to_str(opts)
-			opts.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
+			if opts.nil?
+				""
+			else
+				opts.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
+			end
 		end
 
 	end

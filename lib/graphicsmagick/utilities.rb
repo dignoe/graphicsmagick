@@ -10,6 +10,10 @@ module GraphicsMagick
 		include GraphicsMagick::Utilities::Composite
 		include GraphicsMagick::Utilities::Mogrify
 
+		def to_cmd
+			"gm #{self.send(:"build_#{@utility}_command", 'output_file')}"
+		end
+
 		private
 
 		def options_to_str(opts)

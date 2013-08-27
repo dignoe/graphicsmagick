@@ -1,20 +1,12 @@
 require 'graphicsmagick/utilities/mogrify'
 require 'graphicsmagick/utilities/identify'
+require 'graphicsmagick/utilities/convert'
 
 module GraphicsMagick
 	module Utilities
 		include GraphicsMagick::Utilities::Identify
+		include GraphicsMagick::Utilities::Convert
 
-		attr_accessor :utility
 
-		def convert
-			@utility = "convert"
-		end
-
-		private
-
-		def utility
-			@utility ||= "mogrify"
-		end
 	end
 end

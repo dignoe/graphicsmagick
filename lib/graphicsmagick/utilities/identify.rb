@@ -4,11 +4,11 @@ module GraphicsMagick
 			attr_accessor :identity
 
 			def width
-				get_identity.strip.split('x')[0]
+				get_identity.strip.split('x')[0].to_int
 			end
 
 			def height
-				get_identity.strip.split('x')[1]
+				get_identity.strip.split('x')[1].to_int
 			end
 
 			private

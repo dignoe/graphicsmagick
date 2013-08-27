@@ -45,19 +45,19 @@ module GraphicsMagick
   			FileUtils.copy_file(path, output_path)
 
   			# gm mogrify [options] file
-  			option_str = command_options.collect {|opt| "#{opt.name} #{opt.args}"}.join(" ")
+  			option_str = command_options.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
   			"gm mogrify #{option_str} #{output_path}"
 
   		elsif utility == "convert"
   			# gm convert [options] input-path [options] output-path
   			options1 = command_options.shift
-  			option_str1 = options1.collect {|opt| "#{opt.name} #{opt.args}"}.join(" ")
-  			option_str2 = command_options.collect {|opt| "#{opt.name} #{opt.args}"}.join(" ")
+  			option_str1 = options1.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
+  			option_str2 = command_options.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
   			"gm convert #{option_str1} #{path} #{option_str2} #{output_path}"
 
   		elsif utility == "composite"
   			# gm convert [options] change-path base-path mask-path output-path
-  			option_str = command_options.collect {|opt| "#{opt.name} #{opt.args}"}.join(" ")
+  			option_str = command_options.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
   			"gm composite #{option_str} #{path} #{base_path} #{mask_path} #{output_path}"
   		end
 
@@ -67,7 +67,7 @@ module GraphicsMagick
 
   	def write!
   		command = if utility == "mogrify"
-  			option_str = command_options.collect {|opt| "#{opt.name} #{opt.args}"}.join(" ")
+  			option_str = command_options.collect {|opt| "#{opt[:name]} #{opt[:args]}"}.join(" ")
   			"gm mogrify #{option_str} #{path}"
   		else
   			raise NoMethodError, "You must use Image#write(output) with the #{utility} command"

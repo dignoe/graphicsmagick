@@ -10,6 +10,7 @@ module GraphicsMagick
 				else
 					raise NoMethodError, "You can't use Image#composite with #{utility}"
 				end
+				self
 			end
 
 

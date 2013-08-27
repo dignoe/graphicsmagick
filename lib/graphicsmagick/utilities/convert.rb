@@ -8,6 +8,7 @@ module GraphicsMagick
 				else
 					raise NoMethodError, "You can't use Image#convert with #{utility}"
 				end
+				self
 			end
 
 			private

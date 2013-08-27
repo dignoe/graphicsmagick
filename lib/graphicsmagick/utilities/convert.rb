@@ -4,7 +4,7 @@ module GraphicsMagick
 			def convert
 				if utility == "mogrify"
 					utility = "convert"
-					options = [options]
+					command_options = [command_options]
 				else
 					raise NoMethodError, "You can't use Image#convert with #{utility}"
 				end

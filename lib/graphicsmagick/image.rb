@@ -9,13 +9,13 @@ module GraphicsMagick
 
 	class Image
 		attr_accessor :file
-		attr_accessor :options
+		attr_accessor :command_options
 		attr_accessor :utility
 
 		include GraphicsMagick::Utilities
 
     def initialize(input)
-    	options = []
+    	command_options = []
     	utility = "mogrify"
 
     	if input.is_a? String
@@ -45,19 +45,19 @@ module GraphicsMagick
   			FileUtils.copy_file(path, output_path)
 
   			# gm mogrify [options] file
-  			option_str = options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
+  			option_str = command_options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
   			"gm mogrify #{option_str} #{output_path}"
 
   		elsif utility == "convert"
   			# gm convert [options] input-path [options] output-path
-  			options1 = options.shift
+  			options1 = command_options.shift
   			option_str1 = options1.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
-  			option_str2 = options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
+  			option_str2 = command_options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
   			"gm convert #{option_str1} #{path} #{option_str2} #{output_path}"
 
   		elsif utility == "composite"
   			# gm convert [options] change-path base-path mask-path output-path
-  			option_str = options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
+  			option_str = command_options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
   			"gm composite #{option_str} #{path} #{base_path} #{mask_path} #{output_path}"
   		end
 
@@ -67,7 +67,7 @@ module GraphicsMagick
 
   	def write!
   		command = if utility == "mogrify"
-  			option_str = options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
+  			option_str = command_options.collect {|opt| "#{opt.key} #{opt.value}"}.join(" ")
   			"gm mogrify #{option_str} #{path}"
   		else
   			raise NoMethodError, "You must use Image#write(output) with the #{utility} command"
@@ -86,7 +86,7 @@ module GraphicsMagick
     private
 
     def add_option option_name, *args
-    	options << {option_name => args.collect { |a| Shellwords.escape(a.to_s) }}
+    	command_options << {option_name => args.collect { |a| Shellwords.escape(a.to_s) }}
     end
 
     def run command

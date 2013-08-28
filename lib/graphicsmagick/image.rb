@@ -6,7 +6,7 @@ require 'active_support/core_ext/numeric/time'
 
 module GraphicsMagick
 
-	GraphicsMagickError = Class.new(StandardError)
+	UnknownOptionError = Class.new(StandardError)
 
 	class Image
 		attr_reader :file
@@ -60,7 +60,7 @@ module GraphicsMagick
     	cmd = Subexec.run(command, :timeout => 30.seconds)
 
       if cmd.exitstatus != 0
-      	raise GraphicsMagickError, "#{command} failed: #{cmd.output}"
+      	raise UnknownOptionError, "#{command} failed: #{cmd.output}"
       end
     ensure
     	@command_options = []

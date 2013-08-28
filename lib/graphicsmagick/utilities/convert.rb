@@ -4,7 +4,7 @@ module GraphicsMagick
 			def convert
 				if @utility.nil?
 					@utility = "convert"
-					@command_options = [command_options]
+					@command_options = [@command_options]
 				else
 					raise NoMethodError, "You can't use Image#convert with #{utility}"
 				end

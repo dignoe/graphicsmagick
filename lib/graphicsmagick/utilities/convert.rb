@@ -6,7 +6,7 @@ module GraphicsMagick
 					@utility = "convert"
 					@command_options = [@command_options]
 				else
-					raise NoMethodError, "You can't use Image#convert with #{utility}"
+					raise NoMethodError, "You can't use Image#convert with #{@utility}"
 				end
 				self
 			end

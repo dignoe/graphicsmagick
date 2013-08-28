@@ -11,6 +11,7 @@ I wanted to use Graphicsmagick, but wanted a Ruby wrapper to help deal with exce
 
 #### Install Graphicsmagick
 http://www.graphicsmagick.org/README.html
+
 On OS X, it's recommended to use `brew`
 ```bash
 brew update

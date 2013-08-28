@@ -8,7 +8,7 @@ module GraphicsMagick
 					@base_file = parse_input(base)
 					@mask_file = parse_input(mask) if mask
 				else
-					raise NoMethodError, "You can't use Image#composite with #{utility}"
+					raise NoMethodError, "You can't use Image#composite with #{@utility}"
 				end
 				self
 			end

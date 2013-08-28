@@ -4,7 +4,7 @@ module GraphicsMagick
 
 			private
 
-			def composite_requires_output_file?
+			def mogrify_requires_output_file?
 				false
 			end
 

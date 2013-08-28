@@ -13,7 +13,7 @@ module GraphicsMagick
 
 			private
 
-			def composite_requires_output_file?
+			def convert_requires_output_file?
 				true
 			end
 

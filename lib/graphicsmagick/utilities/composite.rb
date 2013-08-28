@@ -16,6 +16,10 @@ module GraphicsMagick
 
 			private
 
+			def composite_requires_output_file?
+				true
+			end
+
 			# gm convert [options] change-path base-path mask-path output-path
 			def build_composite_command(output_path)
   			"composite #{options_to_str(@command_options)} #{path} #{@base_file.path} #{@mask_file.path if @mask_file} #{output_path}"

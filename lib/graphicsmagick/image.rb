@@ -27,25 +27,17 @@ module GraphicsMagick
   	def write output
   		output_path = parse_input(output, false)
 
-  		if @utility.nil?
-  			@utility = "mogrify"
-  			FileUtils.copy_file(self.path, output_path)
-  		end
-  		command = self.send(:"build_#{@utility}_command", output_path)
-
+  		FileUtils.copy_file(self.path, output_path) unless requires_output_file?
+  		
+  		command = build_command(output_path)
   		run(command)
   		GraphicsMagick::Image.new(output_path)
   	end
 
   	def write!
-  		if @utility.nil?
-  			@utility = "mogrify"
-  		else
-  			raise NoMethodError, "You must use Image#write(output) with the #{utility} command"
-  		end
+  		raise NoMethodError, "You cannot use Image#write(output) with the #{current_utility} command" if requires_output_file?
 
-  		command = self.send(:"build_#{@utility}_command", self.path)
-
+  		command = build_command(path)
   		run(command)
   		self
   	end

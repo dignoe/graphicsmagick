@@ -12,6 +12,10 @@ module GraphicsMagick
 
 			private
 
+			def composite_requires_output_file?
+				false
+			end
+
 			def get_identity
 				@identity ||= `gm identify -ping -format '%wx%h' #{path}`
 			end

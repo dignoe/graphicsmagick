@@ -13,6 +13,10 @@ module GraphicsMagick
 
 			private
 
+			def composite_requires_output_file?
+				true
+			end
+
 			# gm convert [options] input-path [options] output-path
 			def build_convert_command(output_path)
   			first_options = @command_options[0]

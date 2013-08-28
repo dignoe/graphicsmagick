@@ -17,7 +17,7 @@ module GraphicsMagick
 			private
 
 			def composite_requires_output_file?
-				true
+				false
 			end
 
 			# gm convert [options] change-path base-path mask-path output-path

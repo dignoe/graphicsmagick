@@ -20,25 +20,31 @@ module GraphicsMagick
     	@file = parse_input(input)
   	end
 
+  	# Returns the path of the associated file
   	def path
   		@file.path
   	end
 
-  	def write output
+  	# Writes the changes to the file specified in +output+.
+  	# Set +:timeout => 30.seconds+ to change the timeout value. Default is one minute.
+  	def write output, opts={}
   		output_path = parse_input(output, false)
 
   		FileUtils.copy_file(self.path, output_path) unless requires_output_file?
   		
   		command = build_command(output_path)
-  		run(command)
+  		run(command, opts)
   		GraphicsMagick::Image.new(output_path)
   	end
 
-  	def write!
+
+  	# Writes the changes to the current file.
+  	# Set +:timeout => 30.seconds+ to change the timeout value. Default is one minute.
+  	def write! opts={}
   		raise NoMethodError, "You cannot use Image#write(output) with the #{current_utility} command" if requires_output_file?
 
   		command = build_command(path)
-  		run(command)
+  		run(command, opts)
   		self
   	end
 
@@ -55,9 +61,10 @@ module GraphicsMagick
     	self
     end
 
-    def run command
+    def run command, opts={}
+    	opts.reverse_merge!(:timeout => 1.minute)
     	command = "gm #{command}"
-    	cmd = Subexec.run(command, :timeout => 30.seconds)
+    	cmd = Subexec.run(command, opts)
 
       if cmd.exitstatus != 0
       	raise UnknownOptionError, "#{command} failed: #{cmd.output}"

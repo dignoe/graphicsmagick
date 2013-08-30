@@ -11,6 +11,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Light ruby wrapper for the GraphicsMagick CLI."
   gem.summary       = "Light ruby wrapper for the GraphicsMagick CLI."
   gem.homepage      = "https://github.com/dignoe/graphicsmagick"
+  gem.license       = 'MIT'
 
   gem.add_dependency('subexec')
 

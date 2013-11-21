@@ -21,7 +21,7 @@ module GraphicsMagick
 			def build_convert_command(output_path)
   			first_options = @command_options[0]
   			second_options = @command_options[1..@command_options.length]
-  			"convert #{options_to_str(first_options)} #{path} #{options_to_str(second_options)} #{output_path}"
+  			"convert #{options_to_str(first_options)} #{path} #{options_to_str(second_options)} -create-directories #{output_path}"
 			end
 
 		end

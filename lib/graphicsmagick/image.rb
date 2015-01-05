@@ -62,7 +62,7 @@ module GraphicsMagick
     end
 
     def run command, opts={}
-    	opts.reverse_merge!(:timeout => 1.minute)
+    	opts = {:timeout => 1.minute}.merge(opts)
     	command = "gm #{command}"
     	cmd = Subexec.run(command, opts)
 

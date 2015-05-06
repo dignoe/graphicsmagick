@@ -2,7 +2,6 @@ require 'tempfile'
 require 'subexec'
 require 'shellwords'
 require 'graphicsmagick/utilities'
-require 'active_support/core_ext/numeric/time'
 
 module GraphicsMagick
 
@@ -31,7 +30,7 @@ module GraphicsMagick
   		output_path = parse_input(output, false)
 
   		FileUtils.copy_file(self.path, output_path) unless requires_output_file?
-  		
+
   		command = build_command(output_path)
   		run(command, opts)
   		GraphicsMagick::Image.new(output_path)
@@ -62,7 +61,7 @@ module GraphicsMagick
     end
 
     def run command, opts={}
-    	opts = {:timeout => 1.minute}.merge(opts)
+    	opts = {:timeout => 60}.merge(opts)
     	command = "gm #{command}"
     	cmd = Subexec.run(command, opts)
 
